@@ -12,13 +12,16 @@ import {
 
 import { MonoText } from '../components/StyledText';
 
+import { TitleBar } from '../components/TitleBar';
+
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <ScrollView
         style={styles.container}
         contentContainerStyle={styles.contentContainer}>
-        <View style={styles.welcomeContainer}>
+          <TitleBar></TitleBar>
+        {/* <View style={styles.welcomeContainer}>
           <Image
             source={
               __DEV__
@@ -50,7 +53,7 @@ export default function HomeScreen() {
               Help, it didn’t automatically reload!
             </Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
       </ScrollView>
 
       <View style={styles.tabBarInfoContainer}>
