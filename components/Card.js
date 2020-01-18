@@ -1,24 +1,25 @@
 import React from 'react'
 import {View, Text, StyleSheet} from 'react-native'
-import { ScrollView } from 'react-native-gesture-handler'
 
-export function TitleBar(props) {
+export function Card(props) {
     return (
         <View style={styles.outsidecontainer}>
             <View style={styles.insidecontainer}>
-                <Text style={styles.titletext}>RedAlert</Text>
+                {props.children}
             </View>
         </View>
     )
+
 }
 
 var styles = StyleSheet.create({
     outsidecontainer :{
-        margin:30,
+        margin:10,
     },
     insidecontainer: {
-        backgroundColor:'#FFA97B',
-        borderRadius:25,
+        padding:15,
+        backgroundColor:'white',
+        borderRadius:10,
         shadowColor: 'grey',
         shadowOffset: { width: 0 },
         shadowOpacity: 0.2,
@@ -27,9 +28,7 @@ var styles = StyleSheet.create({
     titletext: {
         textAlign:'center',
         color:'white',
-        fontSize:40,
-        fontWeight:'bold',
-        fontFamily:'Helvetica',
+        fontSize:50,
         padding:30
-        }
+    }
 })

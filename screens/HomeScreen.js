@@ -8,19 +8,45 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Button,
 } from 'react-native';
 
 import { MonoText } from '../components/StyledText';
 
 import { TitleBar } from '../components/TitleBar';
+import { Card } from '../components/Card';
+
 
 export default function HomeScreen() {
+  const coordinates = ["123", "456", "789"]
+
+  const coordCards = coordinates.map(coord => {
+      return (
+      // <Card>
+      //   <Text>
+      //     {coord}
+      //   </Text>
+      // </Card>
+      <View style={styles.buttoncard}>
+          <Button title={coord} style={styles.button}>
+          </Button>
+      </View>
+
+      )
+  })
+
   return (
     <View style={styles.container}>
+      <TitleBar></TitleBar>
       <ScrollView
         style={styles.container}
         contentContainerStyle={styles.contentContainer}>
-          <TitleBar></TitleBar>
+        <View>
+          {/* <Card coordinate="123"></Card> */}
+          {coordCards}
+        </View>
+        
+          
         {/* <View style={styles.welcomeContainer}>
           <Image
             source={
@@ -56,7 +82,7 @@ export default function HomeScreen() {
         </View> */}
       </ScrollView>
 
-      <View style={styles.tabBarInfoContainer}>
+      {/* <View style={styles.tabBarInfoContainer}>
         <Text style={styles.tabBarInfoText}>
           This is a tab bar. You can edit it in:
         </Text>
@@ -67,7 +93,7 @@ export default function HomeScreen() {
             navigation/MainTabNavigator.js
           </MonoText>
         </View>
-      </View>
+      </View> */}
     </View>
   );
 }
@@ -112,6 +138,19 @@ function handleHelpPress() {
 }
 
 const styles = StyleSheet.create({
+  button:{
+    textAlign:'left'
+  },
+  buttoncard: {
+    margin:10,
+    padding:10,
+    backgroundColor:'white',
+    borderRadius:10,
+    shadowColor: 'grey',
+    shadowOffset: { width: 0 },
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
