@@ -33,7 +33,7 @@ export default class HomeScreen extends Component {
     });
   }
   render(){
-    const coordinates = ["ALERT 1", "ALERT 2", "ALERT 3"]
+    const coordinates = ["-37.5752810322 130.638130781", "-31.5752810322 141.638130781", "-34.5752810322 141.638130781"]
 
     const coordCards = coordinates.map(coord => {
         return (
