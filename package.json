@@ -15,15 +15,21 @@
     "@expo/samples": "~36.0.0",
     "@expo/vector-icons": "~10.0.0",
     "@react-navigation/web": "~1.0.0-alpha.9",
+    "@teachablemachine/image": "^0.8.4",
+    "@tensorflow/tfjs": "^1.5.1",
+    "axios": "^0.19.1",
+    "babel-cli": "^6.26.0",
     "expo": "~36.0.0",
     "expo-asset": "~8.0.0",
     "expo-constants": "~8.0.0",
     "expo-font": "~8.0.0",
+    "expo-image-picker": "^8.0.2",
     "expo-web-browser": "~8.0.0",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
     "react-native-gesture-handler": "~1.5.0",
+    "react-native-os": "^1.2.6",
     "react-native-reanimated": "~1.4.0",
     "react-native-screens": "2.0.0-alpha.12",
     "react-native-web": "~0.11.7",
@@ -33,8 +39,12 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
+    "@babel/plugin-transform-typescript": "^7.8.3",
     "babel-preset-expo": "~8.0.0",
     "jest-expo": "~36.0.1"
   },
-  "private": true
+  "private": true,
+  "plugins": [
+    "@babel/plugin-transform-typescript"
+  ]
 }
