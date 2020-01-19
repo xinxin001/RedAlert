@@ -1,5 +1,5 @@
 import * as WebBrowser from 'expo-web-browser';
-import React from 'react';
+import React, {Component} from 'react';
 import {
   Image,
   Platform,
@@ -14,88 +14,88 @@ import {
 import { MonoText } from '../components/StyledText';
 
 import { TitleBar } from '../components/TitleBar';
-import { Card } from '../components/Card';
+import {CoordCard} from '../components/CoordCard';
 
 
-export default function HomeScreen() {
-  const coordinates = ["123", "456", "789"]
+export default class HomeScreen extends Component {
+  onPressCoord(){
+    alert('u pressed the button')
+  }
+  
+  render(){
+    const coordinates = ["123", "456", "789"]
 
-  const coordCards = coordinates.map(coord => {
-      return (
-      // <Card>
-      //   <Text>
-      //     {coord}
-      //   </Text>
-      // </Card>
-      <View style={styles.buttoncard}>
-          <Button title={coord} style={styles.button}>
-          </Button>
-      </View>
+    const coordCards = coordinates.map(coord => {
+        return (
+          <CoordCard onPress={this.onPressCoord}> 
+            <Text>
+              {coord}
+            </Text>
+          </CoordCard>
+        )
+    })
 
-      )
-  })
-
-  return (
-    <View style={styles.container}>
-      <TitleBar></TitleBar>
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}>
-        <View>
-          {/* <Card coordinate="123"></Card> */}
-          {coordCards}
-        </View>
-        
+    return (
+      <View style={styles.container}>
+        <TitleBar></TitleBar>
+        <ScrollView
+          style={styles.container}
+          contentContainerStyle={styles.contentContainer}>
+          <View>
+            {coordCards}
+          </View>
           
-        {/* <View style={styles.welcomeContainer}>
-          <Image
-            source={
-              __DEV__
-                ? require('../assets/images/robot-dev.png')
-                : require('../assets/images/robot-prod.png')
-            }
-            style={styles.welcomeImage}
-          />
-        </View>
-
-        <View style={styles.getStartedContainer}>
-          <DevelopmentModeNotice />
-
-          <Text style={styles.getStartedText}>Get started by opening</Text>
-
-          <View
-            style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-            <MonoText>screens/HomeScreen.js</MonoText>
+            
+          {/* <View style={styles.welcomeContainer}>
+            <Image
+              source={
+                __DEV__
+                  ? require('../assets/images/robot-dev.png')
+                  : require('../assets/images/robot-prod.png')
+              }
+              style={styles.welcomeImage}
+            />
           </View>
 
-          <Text style={styles.getStartedText}>
-            Chungis
-          </Text>
-        </View>
+          <View style={styles.getStartedContainer}>
+            <DevelopmentModeNotice />
 
-        <View style={styles.helpContainer}>
-          <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-            <Text style={styles.helpLinkText}>
-              Help, it didn’t automatically reload!
+            <Text style={styles.getStartedText}>Get started by opening</Text>
+
+            <View
+              style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
+              <MonoText>screens/HomeScreen.js</MonoText>
+            </View>
+
+            <Text style={styles.getStartedText}>
+              Chungis
             </Text>
-          </TouchableOpacity>
+          </View>
+
+          <View style={styles.helpContainer}>
+            <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
+              <Text style={styles.helpLinkText}>
+                Help, it didn’t automatically reload!
+              </Text>
+            </TouchableOpacity>
+          </View> */}
+        </ScrollView>
+
+        {/* <View style={styles.tabBarInfoContainer}>
+          <Text style={styles.tabBarInfoText}>
+            This is a tab bar. You can edit it in:
+          </Text>
+
+          <View
+            style={[styles.codeHighlightContainer, styles.navigationFilename]}>
+            <MonoText style={styles.codeHighlightText}>
+              navigation/MainTabNavigator.js
+            </MonoText>
+          </View>
         </View> */}
-      </ScrollView>
-
-      {/* <View style={styles.tabBarInfoContainer}>
-        <Text style={styles.tabBarInfoText}>
-          This is a tab bar. You can edit it in:
-        </Text>
-
-        <View
-          style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-          <MonoText style={styles.codeHighlightText}>
-            navigation/MainTabNavigator.js
-          </MonoText>
-        </View>
-      </View> */}
-    </View>
-  );
+      </View>
+    );
+    }
 }
 
 HomeScreen.navigationOptions = {
@@ -138,9 +138,8 @@ function handleHelpPress() {
 }
 
 const styles = StyleSheet.create({
-  button:{
-    textAlign:'left'
-  },
+  buttons:{
+    width:170,backgroundColor:'#99004d',marginTop:20,  },
   buttoncard: {
     margin:10,
     padding:10,

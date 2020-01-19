@@ -15,6 +15,7 @@ export function TitleBar(props) {
 var styles = StyleSheet.create({
     outsidecontainer :{
         margin:30,
+        backgroundColor:'transparent'
     },
     insidecontainer: {
         backgroundColor:'#FFA97B',

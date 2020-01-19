@@ -1,7 +1,7 @@
 import React from 'react'
 import {View, Text, StyleSheet} from 'react-native'
 
-export function Card(props) {
+export function CoordCard(props) {
     return (
         <View style={styles.outsidecontainer}>
             <View style={styles.insidecontainer}>
