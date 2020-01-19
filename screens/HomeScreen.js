@@ -13,17 +13,23 @@ import {
 
 import { MonoText } from '../components/StyledText';
 
-import { TitleBar } from '../components/TitleBar';
+import  TitleBar  from '../components/TitleBar';
 import {CoordCard} from '../components/CoordCard';
+import { getCurrentFrame } from 'expo/build/AR';
+import * as Font from 'expo-font';
 
 
 export default class HomeScreen extends Component {
   _onPressCoord(){
-    alert('u hello the button')
+    alert("Congratulations, you've won!")
   }
-  
+  async componentDidMount() {
+    await Font.loadAsync({
+      'Yanone': require('../assets/fonts/YanoneKaffeesatz.ttf'),
+    });
+  }
   render(){
-    const coordinates = ["123", "456", "789"]
+    const coordinates = ["ALERT 1", "ALERT 2", "ALERT 3"]
 
     const coordCards = coordinates.map(coord => {
         return (
@@ -36,11 +42,11 @@ export default class HomeScreen extends Component {
     })
 
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <TitleBar></TitleBar>
-        <View>
-          <Text style={{color:'red', fontSize:25, fontWeight:'bold'}}>
-          Ongoing
+        <View style={{backgroundColor: "white"}}>
+          <Text style={{color:'orangered', fontSize:35, fontWeight:'900', fontFamily: 'Yanone', padding: 3}}>
+          ONGOING ZONE
           </Text>
         </View>
 
@@ -50,18 +56,32 @@ export default class HomeScreen extends Component {
           <View>
             {coordCards}
           </View>
-          
-            
-          
         </ScrollView>
+
         <View>
-        <Text>
-          At Risk
+        <Text style={{color:'darkgoldenrod', fontSize: 35, fontWeight:'bold', padding: 3, fontFamily: 'Yanone'}}>
+          AT RISK ZONE
         </Text>
         </View>
 
-        <ScrollView>
-          {coordCards}
+        <ScrollView
+          style={styles.container}
+          contentContainerStyle={styles.contentContainer}>
+          <View> 
+            {coordCards}
+          </View>
+        </ScrollView>
+
+        <View><Text style={{color: 'darkgreen', fontSize: 35, fontWeight: "bold", padding: 10, fontFamily: 'Yanone'}}> 
+        SAFE ZONE
+        </Text></View>
+
+        <ScrollView
+          style={styles.container}
+          contentContainerStyle={styles.contentContainer}>
+          <View>
+            {coordCards}
+          </View>
         </ScrollView>
 
         {/* <View style={styles.tabBarInfoContainer}>
@@ -76,7 +96,9 @@ export default class HomeScreen extends Component {
             </MonoText>
           </View>
         </View> */}
-      </View>
+
+        
+      </ScrollView>
     );
     }
 }
@@ -130,7 +152,8 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'white',
+    padding: 15
   },
   developmentModeText: {
     marginBottom: 20,
@@ -197,7 +220,7 @@ const styles = StyleSheet.create({
   },
   tabBarInfoText: {
     fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
+    color: 'red',
     textAlign: 'center',
   },
   navigationFilename: {

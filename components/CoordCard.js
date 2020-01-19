@@ -17,11 +17,11 @@ export function CoordCard(props) {
 
 var styles = StyleSheet.create({
     outsidecontainer :{
-        margin:10,
+        margin:8,
     },
     insidecontainer: {
         padding:15,
-        backgroundColor:'white',
+        backgroundColor:'aliceblue',
         borderRadius:10,
         shadowColor: 'grey',
         shadowOffset: { width: 0 },
