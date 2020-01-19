@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
+import MapScreen from '../screens/MapScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
 const config = Platform.select({
@@ -52,6 +53,24 @@ LinksStack.navigationOptions = {
 
 LinksStack.path = '';
 
+
+const MapStack = createStackNavigator(
+  {
+    Map: MapScreen,
+  },
+  config
+);
+
+MapStack.navigationOptions = {
+  tabBarLabel: 'Map',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+  ),
+};
+
+MapStack.path = '';
+
+
 const SettingsStack = createStackNavigator(
   {
     Settings: SettingsScreen,
@@ -71,6 +90,7 @@ SettingsStack.path = '';
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
   LinksStack,
+  MapStack,
   SettingsStack,
 });
 

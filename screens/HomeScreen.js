@@ -38,6 +38,12 @@ export default class HomeScreen extends Component {
     return (
       <View style={styles.container}>
         <TitleBar></TitleBar>
+        <View>
+          <Text style={{color:'red', fontSize:25, fontWeight:'bold'}}>
+          Ongoing
+          </Text>
+        </View>
+
         <ScrollView
           style={styles.container}
           contentContainerStyle={styles.contentContainer}>
@@ -46,39 +52,16 @@ export default class HomeScreen extends Component {
           </View>
           
             
-          {/* <View style={styles.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                  ? require('../assets/images/robot-dev.png')
-                  : require('../assets/images/robot-prod.png')
-              }
-              style={styles.welcomeImage}
-            />
-          </View>
+          
+        </ScrollView>
+        <View>
+        <Text>
+          At Risk
+        </Text>
+        </View>
 
-          <View style={styles.getStartedContainer}>
-            <DevelopmentModeNotice />
-
-            <Text style={styles.getStartedText}>Get started by opening</Text>
-
-            <View
-              style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-              <MonoText>screens/HomeScreen.js</MonoText>
-            </View>
-
-            <Text style={styles.getStartedText}>
-              Chungis
-            </Text>
-          </View>
-
-          <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>
-                Help, it didn’t automatically reload!
-              </Text>
-            </TouchableOpacity>
-          </View> */}
+        <ScrollView>
+          {coordCards}
         </ScrollView>
 
         {/* <View style={styles.tabBarInfoContainer}>
@@ -156,9 +139,9 @@ const styles = StyleSheet.create({
     lineHeight: 19,
     textAlign: 'center',
   },
-  contentContainer: {
-    paddingTop: 30,
-  },
+  // contentContainer: {
+  //   paddingTop: 30,
+  // },
   welcomeContainer: {
     alignItems: 'center',
     marginTop: 10,
