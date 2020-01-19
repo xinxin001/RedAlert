@@ -16,10 +16,13 @@ import { MonoText } from '../components/StyledText';
 import { TitleBar } from '../components/TitleBar';
 import {CoordCard} from '../components/CoordCard';
 
+import { Actions, Router, Scene } from "react-native-router-flux";
+
+
 
 export default class HomeScreen extends Component {
   _onPressCoord(){
-    alert('u hello the button')
+    Actions.scene2()
   }
   
   render(){
