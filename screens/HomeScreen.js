@@ -18,8 +18,8 @@ import {CoordCard} from '../components/CoordCard';
 
 
 export default class HomeScreen extends Component {
-  onPressCoord(){
-    alert('u pressed the button')
+  _onPressCoord(){
+    alert('u hello the button')
   }
   
   render(){
@@ -27,8 +27,8 @@ export default class HomeScreen extends Component {
 
     const coordCards = coordinates.map(coord => {
         return (
-          <CoordCard onPress={this.onPressCoord}> 
-            <Text>
+          <CoordCard onPress={this._onPressCoord}> 
+            <Text style={styles.coordstyle}>
               {coord}
             </Text>
           </CoordCard>
@@ -138,17 +138,12 @@ function handleHelpPress() {
 }
 
 const styles = StyleSheet.create({
-  buttons:{
-    width:170,backgroundColor:'#99004d',marginTop:20,  },
-  buttoncard: {
-    margin:10,
-    padding:10,
-    backgroundColor:'white',
-    borderRadius:10,
-    shadowColor: 'grey',
-    shadowOffset: { width: 0 },
-    shadowOpacity: 0.2,
-    shadowRadius: 10,
+  coordstyle:{
+    textAlign:'center',
+    color:'black',
+    fontSize:20,
+    fontWeight:'bold',
+    textAlign:'left'
   },
   container: {
     flex: 1,

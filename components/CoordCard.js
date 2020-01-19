@@ -1,13 +1,16 @@
 import React from 'react'
-import {View, Text, StyleSheet} from 'react-native'
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native'
 
 export function CoordCard(props) {
     return (
-        <View style={styles.outsidecontainer}>
-            <View style={styles.insidecontainer}>
-                {props.children}
+        <TouchableOpacity onPress={props.onPress}>
+            <View style={styles.outsidecontainer}>
+                <View style={styles.insidecontainer}>
+                    {props.children}
+                </View>
             </View>
-        </View>
+        </TouchableOpacity>
+
     )
 
 }
@@ -25,10 +28,4 @@ var styles = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 10,
     },
-    titletext: {
-        textAlign:'center',
-        color:'white',
-        fontSize:50,
-        padding:30
-    }
 })
