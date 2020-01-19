@@ -3,29 +3,42 @@ import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 import React, { useState } from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { Actions, Router, Scene } from "react-native-router-flux";
 import { Ionicons } from '@expo/vector-icons';
 
 import AppNavigator from './navigation/AppNavigator';
 
-export default function App(props) {
-  const [isLoadingComplete, setLoadingComplete] = useState(false);
+import MapScreen from './screens/MapScreen'
+import HomeScreen from './screens/HomeScreen'
 
-  if (!isLoadingComplete && !props.skipLoadingScreen) {
-    return (
-      <AppLoading
-        startAsync={loadResourcesAsync}
-        onError={handleLoadingError}
-        onFinish={() => handleFinishLoading(setLoadingComplete)}
-      />
-    );
-  } else {
-    return (
-      <View style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-        <AppNavigator />
-      </View>
-    );
-  }
+export default function App(props) {
+  // const [isLoadingComplete, setLoadingComplete] = useState(false);
+
+  // if (!isLoadingComplete && !props.skipLoadingScreen) {
+  //   return (
+  //     <AppLoading
+  //       startAsync={loadResourcesAsync}
+  //       onError={handleLoadingError}
+  //       onFinish={() => handleFinishLoading(setLoadingComplete)}
+  //     />
+  //   );
+  // } else {
+  //   return (
+  //     <View style={styles.container}>
+  //       {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+  //       <AppNavigator />
+  //     </View>
+  //   );
+  // }
+
+  return (
+    <Router>
+      <Scene key="app">
+        <Scene key="scene1" component={HomeScreen} hideNavBar />
+        <Scene key="scene2" component={MapScreen} hideNavBar/>
+      </Scene>
+    </Router>
+  )
 }
 
 async function loadResourcesAsync() {

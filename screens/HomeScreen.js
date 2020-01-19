@@ -1,5 +1,5 @@
 import * as WebBrowser from 'expo-web-browser';
-import React from 'react';
+import React, {Component} from 'react';
 import {
   Image,
   Platform,
@@ -8,65 +8,103 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Button,
 } from 'react-native';
 
 import { MonoText } from '../components/StyledText';
 
-export default function HomeScreen() {
-  return (
-    <View style={styles.container}>
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}>
-        <View style={styles.welcomeContainer}>
-          <Image
-            source={
-              __DEV__
-                ? require('../assets/images/robot-dev.png')
-                : require('../assets/images/robot-prod.png')
-            }
-            style={styles.welcomeImage}
-          />
-        </View>
+import  TitleBar  from '../components/TitleBar';
+import {CoordCard} from '../components/CoordCard';
+import { getCurrentFrame } from 'expo/build/AR';
+import * as Font from 'expo-font';
 
-        <View style={styles.getStartedContainer}>
-          <DevelopmentModeNotice />
+import { Actions, Router, Scene } from "react-native-router-flux";
 
-          <Text style={styles.getStartedText}>Get started by opening</Text>
 
-          <View
-            style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-            <MonoText>screens/HomeScreen.js</MonoText>
-          </View>
 
-          <Text style={styles.getStartedText}>
-            Chungis
+export default class HomeScreen extends Component {
+  _onPressCoord(){
+    Actions.scene2()
+    alert("Congratulations, you've won!")
+  }
+  async componentDidMount() {
+    await Font.loadAsync({
+      'Yanone': require('../assets/fonts/YanoneKaffeesatz.ttf'),
+    });
+  }
+  render(){
+    const coordinates = ["ALERT 1", "ALERT 2", "ALERT 3"]
+
+    const coordCards = coordinates.map(coord => {
+        return (
+          <CoordCard onPress={this._onPressCoord}> 
+            <Text style={styles.coordstyle}>
+              {coord}
+            </Text>
+          </CoordCard>
+        )
+    })
+
+    return (
+      <ScrollView style={styles.container}>
+        <TitleBar></TitleBar>
+        <View style={{backgroundColor: "white"}}>
+          <Text style={{color:'orangered', fontSize:35, fontWeight:'900', fontFamily: 'Yanone', padding: 3}}>
+          ONGOING ZONE
           </Text>
         </View>
 
-        <View style={styles.helpContainer}>
-          <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-            <Text style={styles.helpLinkText}>
-              Help, it didn’t automatically reload!
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
+        <ScrollView
+          style={styles.container}
+          contentContainerStyle={styles.contentContainer}>
+          <View>
+            {coordCards}
+          </View>
+        </ScrollView>
 
-      <View style={styles.tabBarInfoContainer}>
-        <Text style={styles.tabBarInfoText}>
-          This is a tab bar. You can edit it in:
+        <View>
+        <Text style={{color:'darkgoldenrod', fontSize: 35, fontWeight:'bold', padding: 3, fontFamily: 'Yanone'}}>
+          AT RISK ZONE
         </Text>
-
-        <View
-          style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-          <MonoText style={styles.codeHighlightText}>
-            navigation/MainTabNavigator.js
-          </MonoText>
         </View>
-      </View>
-    </View>
-  );
+
+        <ScrollView
+          style={styles.container}
+          contentContainerStyle={styles.contentContainer}>
+          <View> 
+            {coordCards}
+          </View>
+        </ScrollView>
+
+        <View><Text style={{color: 'darkgreen', fontSize: 35, fontWeight: "bold", padding: 10, fontFamily: 'Yanone'}}> 
+        SAFE ZONE
+        </Text></View>
+
+        <ScrollView
+          style={styles.container}
+          contentContainerStyle={styles.contentContainer}>
+          <View>
+            {coordCards}
+          </View>
+        </ScrollView>
+
+        {/* <View style={styles.tabBarInfoContainer}>
+          <Text style={styles.tabBarInfoText}>
+            This is a tab bar. You can edit it in:
+          </Text>
+
+          <View
+            style={[styles.codeHighlightContainer, styles.navigationFilename]}>
+            <MonoText style={styles.codeHighlightText}>
+              navigation/MainTabNavigator.js
+            </MonoText>
+          </View>
+        </View> */}
+
+        
+      </ScrollView>
+    );
+    }
 }
 
 HomeScreen.navigationOptions = {
@@ -109,9 +147,17 @@ function handleHelpPress() {
 }
 
 const styles = StyleSheet.create({
+  coordstyle:{
+    textAlign:'center',
+    color:'black',
+    fontSize:20,
+    fontWeight:'bold',
+    textAlign:'left'
+  },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'white',
+    padding: 15
   },
   developmentModeText: {
     marginBottom: 20,
@@ -120,9 +166,9 @@ const styles = StyleSheet.create({
     lineHeight: 19,
     textAlign: 'center',
   },
-  contentContainer: {
-    paddingTop: 30,
-  },
+  // contentContainer: {
+  //   paddingTop: 30,
+  // },
   welcomeContainer: {
     alignItems: 'center',
     marginTop: 10,
@@ -178,7 +224,7 @@ const styles = StyleSheet.create({
   },
   tabBarInfoText: {
     fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
+    color: 'red',
     textAlign: 'center',
   },
   navigationFilename: {
