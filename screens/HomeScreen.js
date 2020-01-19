@@ -19,13 +19,13 @@ import { getCurrentFrame } from 'expo/build/AR';
 import * as Font from 'expo-font';
 
 import { Actions, Router, Scene } from "react-native-router-flux";
+import AppNavigator from '../navigation/AppNavigator';
 
 
 
 export default class HomeScreen extends Component {
   _onPressCoord(){
     Actions.scene2()
-    alert("Congratulations, you've won!")
   }
   async componentDidMount() {
     await Font.loadAsync({
@@ -87,20 +87,6 @@ export default class HomeScreen extends Component {
             {coordCards}
           </View>
         </ScrollView>
-
-        {/* <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>
-            This is a tab bar. You can edit it in:
-          </Text>
-
-          <View
-            style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>
-              navigation/MainTabNavigator.js
-            </MonoText>
-          </View>
-        </View> */}
-
         
       </ScrollView>
     );

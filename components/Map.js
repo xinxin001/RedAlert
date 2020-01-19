@@ -16,10 +16,7 @@ export default class Map extends React.Component {
         coordinate={marker.latlng}
         title="fire"
         description="big fire here"
-        >
-            <Image 
-                source={require('../assets/images/fire.png')}
-         />
+        > 
 
         </Marker>
         </MapView>
