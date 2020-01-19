@@ -3,7 +3,6 @@ import { ScrollView, StyleSheet, Text } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 import Map from '../components/Map'
 
-import { Actions, Router, Scene } from "react-native-router-flux";
 
 
 export default function MapScreen() {
