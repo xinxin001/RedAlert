@@ -10,7 +10,7 @@ Detects forest fires through satellite images.
 3. Clone the repo
 4. Run ```npm install``` in the repo directory
 5. Run ```npm start``` in the repo directory
-6. Connect with Expo QR code, connect using "Tunnel" 
+6. Connect with any QR scanner and open project in Expo app
 
 *If font error appears, run ``` expo install 'expo-font' ```
 
